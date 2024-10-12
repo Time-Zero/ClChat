@@ -1,7 +1,11 @@
 #include "chatserver.hpp"
+#include "chatservice.hpp"
 #include <muduo/net/TcpServer.h>
 #include <functional>
+#include <nlohmann/json_fwd.hpp>
 #include <thread>
+#include <string>
+#include <nlohmann/json.hpp>
 
 ChatServer::ChatServer(muduo::net::EventLoop *loop,
                 const muduo::net::InetAddress& listenAddr,
@@ -25,12 +29,23 @@ void ChatServer::start()
 
 void ChatServer::onConnection(const muduo::net::TcpConnectionPtr& conn)
 {
-
+    // 用户断开连接
+    if(!conn->connected())
+    {
+        conn->shutdown();
+    }
 }
 
 void ChatServer::onMessage(const muduo::net::TcpConnectionPtr& conn,
                             muduo::net::Buffer* buf,
                             muduo::Timestamp time_stamp)
 {
+    std::string buffer = buf->retrieveAllAsString();
+    nlohmann::json js = nlohmann::json::parse(buffer);      // 消息的反序列化
 
+    // 将网络模块和业务模块解耦
+    // 通过js["msgid"]获取对应的handler
+    auto msgHandler =  ChatService::GetInstance().getHandler(js["msgid"].get<int>());
+    // 回调消息对应的绑定好的事件处理器来进行对应的事件处理
+    msgHandler(conn,js,time_stamp);
 }
