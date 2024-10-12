@@ -4,4 +4,7 @@
 /home/ymc/ClChat/build/test/CMakeFiles/edit_cache.dir
 /home/ymc/ClChat/build/test/json_test/CMakeFiles/rebuild_cache.dir
 /home/ymc/ClChat/build/test/json_test/CMakeFiles/edit_cache.dir
-/home/ymc/ClChat/build/test/json_test/CMakeFiles/test.dir
+/home/ymc/ClChat/build/test/json_test/CMakeFiles/json_test.dir
+/home/ymc/ClChat/build/test/muduo_test/CMakeFiles/rebuild_cache.dir
+/home/ymc/ClChat/build/test/muduo_test/CMakeFiles/edit_cache.dir
+/home/ymc/ClChat/build/test/muduo_test/CMakeFiles/muduo_test.dir
