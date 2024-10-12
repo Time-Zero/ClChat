@@ -1,0 +1,5 @@
+/home/ymc/ClChat/build/CMakeFiles/rebuild_cache.dir
+/home/ymc/ClChat/build/CMakeFiles/edit_cache.dir
+/home/ymc/ClChat/build/test/CMakeFiles/rebuild_cache.dir
+/home/ymc/ClChat/build/test/CMakeFiles/edit_cache.dir
+/home/ymc/ClChat/build/test/CMakeFiles/test.dir
