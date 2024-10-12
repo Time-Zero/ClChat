@@ -8,3 +8,8 @@
 /home/ymc/ClChat/build/test/muduo_test/CMakeFiles/rebuild_cache.dir
 /home/ymc/ClChat/build/test/muduo_test/CMakeFiles/edit_cache.dir
 /home/ymc/ClChat/build/test/muduo_test/CMakeFiles/muduo_test.dir
+/home/ymc/ClChat/build/src/CMakeFiles/rebuild_cache.dir
+/home/ymc/ClChat/build/src/CMakeFiles/edit_cache.dir
+/home/ymc/ClChat/build/src/server/CMakeFiles/rebuild_cache.dir
+/home/ymc/ClChat/build/src/server/CMakeFiles/edit_cache.dir
+/home/ymc/ClChat/build/src/server/CMakeFiles/ChatServer.dir
