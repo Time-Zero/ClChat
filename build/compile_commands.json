@@ -1,7 +1,7 @@
 [
 {
   "directory": "/home/ymc/ClChat/build",
-  "command": "/usr/bin/g++    -g   -std=gnu++14 -o test/CMakeFiles/test.dir/test.cpp.o -c /home/ymc/ClChat/test/test.cpp",
-  "file": "/home/ymc/ClChat/test/test.cpp"
+  "command": "/usr/bin/g++    -g   -std=gnu++14 -o test/json_test/CMakeFiles/test.dir/json_test.cpp.o -c /home/ymc/ClChat/test/json_test/json_test.cpp",
+  "file": "/home/ymc/ClChat/test/json_test/json_test.cpp"
 }
 ]

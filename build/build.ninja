@@ -81,19 +81,47 @@ build test/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
 build test/edit_cache: phony test/CMakeFiles/edit_cache.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/ymc/ClChat/test/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build test/json_test/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/ymc/ClChat/build/test/json_test && /usr/bin/cmake -S/home/ymc/ClChat -B/home/ymc/ClChat/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build test/json_test/rebuild_cache: phony test/json_test/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build test/json_test/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/ymc/ClChat/build/test/json_test && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build test/json_test/edit_cache: phony test/json_test/CMakeFiles/edit_cache.util
+
+# =============================================================================
 # Object build statements for EXECUTABLE target test
 
 
 #############################################
 # Order-only phony target for test
 
-build cmake_object_order_depends_target_test: phony || test/CMakeFiles/test.dir
+build cmake_object_order_depends_target_test: phony || test/json_test/CMakeFiles/test.dir
 
-build test/CMakeFiles/test.dir/test.cpp.o: CXX_COMPILER__test ../test/test.cpp || cmake_object_order_depends_target_test
-  DEP_FILE = test/CMakeFiles/test.dir/test.cpp.o.d
+build test/json_test/CMakeFiles/test.dir/json_test.cpp.o: CXX_COMPILER__test ../test/json_test/json_test.cpp || cmake_object_order_depends_target_test
+  DEP_FILE = test/json_test/CMakeFiles/test.dir/json_test.cpp.o.d
   FLAGS = -g   -std=gnu++14
-  OBJECT_DIR = test/CMakeFiles/test.dir
-  OBJECT_FILE_DIR = test/CMakeFiles/test.dir
+  OBJECT_DIR = test/json_test/CMakeFiles/test.dir
+  OBJECT_FILE_DIR = test/json_test/CMakeFiles/test.dir
 
 
 # =============================================================================
@@ -103,9 +131,9 @@ build test/CMakeFiles/test.dir/test.cpp.o: CXX_COMPILER__test ../test/test.cpp |
 #############################################
 # Link the executable ../bin/test
 
-build ../bin/test: CXX_EXECUTABLE_LINKER__test test/CMakeFiles/test.dir/test.cpp.o
+build ../bin/test: CXX_EXECUTABLE_LINKER__test test/json_test/CMakeFiles/test.dir/json_test.cpp.o
   FLAGS = -g
-  OBJECT_DIR = test/CMakeFiles/test.dir
+  OBJECT_DIR = test/json_test/CMakeFiles/test.dir
   POST_BUILD = :
   PRE_LINK = :
   TARGET_FILE = ../bin/test
@@ -131,7 +159,14 @@ build all: phony test/all
 #############################################
 # Folder: /home/ymc/ClChat/build/test
 
-build test/all: phony ../bin/test
+build test/all: phony test/json_test/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/ymc/ClChat/build/test/json_test
+
+build test/json_test/all: phony ../bin/test
 
 # =============================================================================
 # Built-in targets
@@ -145,14 +180,14 @@ default all
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../test/CMakeLists.txt /usr/local/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake /usr/local/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake /usr/local/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake /usr/share/cmake-3.16/Modules/CMakeCInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /usr/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.16/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.16/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.16/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU.cmake /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.16/Modules/FindPackageMessage.cmake /usr/share/cmake-3.16/Modules/Internal/CMakeCheckCompilerFlag.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.16/Modules/Platform/Linux.cmake /usr/share/cmake-3.16/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.16.3/CMakeCCompiler.cmake CMakeFiles/3.16.3/CMakeCXXCompiler.cmake CMakeFiles/3.16.3/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../test/CMakeLists.txt ../test/json_test/CMakeLists.txt /usr/local/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake /usr/local/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake /usr/local/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake /usr/share/cmake-3.16/Modules/CMakeCInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /usr/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.16/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.16/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.16/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU.cmake /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.16/Modules/FindPackageMessage.cmake /usr/share/cmake-3.16/Modules/Internal/CMakeCheckCompilerFlag.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.16/Modules/Platform/Linux.cmake /usr/share/cmake-3.16/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.16.3/CMakeCCompiler.cmake CMakeFiles/3.16.3/CMakeCXXCompiler.cmake CMakeFiles/3.16.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt ../test/CMakeLists.txt /usr/local/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake /usr/local/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake /usr/local/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake /usr/share/cmake-3.16/Modules/CMakeCInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /usr/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.16/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.16/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.16/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU.cmake /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.16/Modules/FindPackageMessage.cmake /usr/share/cmake-3.16/Modules/Internal/CMakeCheckCompilerFlag.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.16/Modules/Platform/Linux.cmake /usr/share/cmake-3.16/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.16.3/CMakeCCompiler.cmake CMakeFiles/3.16.3/CMakeCXXCompiler.cmake CMakeFiles/3.16.3/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../test/CMakeLists.txt ../test/json_test/CMakeLists.txt /usr/local/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake /usr/local/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake /usr/local/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake /usr/share/cmake-3.16/Modules/CMakeCInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /usr/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.16/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.16/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.16/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU.cmake /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.16/Modules/FindPackageMessage.cmake /usr/share/cmake-3.16/Modules/Internal/CMakeCheckCompilerFlag.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.16/Modules/Platform/Linux.cmake /usr/share/cmake-3.16/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.16.3/CMakeCCompiler.cmake CMakeFiles/3.16.3/CMakeCXXCompiler.cmake CMakeFiles/3.16.3/CMakeSystem.cmake: phony
 
 
 #############################################
