@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/ymc/ClChat/bin/json_test"
+			"path" : "/home/ymc/ClChat/lib/muduo_test"
 		}
 	],
 	"backtrace" : 1,
@@ -14,7 +14,7 @@
 		],
 		"files" : 
 		[
-			"test/json_test/CMakeLists.txt"
+			"test/muduo_test/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -35,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g  "
+					"fragment" : "-g -g  "
 				},
 				{
 					"fragment" : "-std=gnu++14"
@@ -48,28 +48,40 @@
 			]
 		}
 	],
-	"id" : "json_test::@f9f4dbe58678fe47eb4d",
+	"id" : "muduo_test::@fa3cbc15b7313ddce739",
 	"link" : 
 	{
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
+				"fragment" : "-g -g",
 				"role" : "flags"
 			},
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "-lmuduo_net",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lmuduo_base",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lpthread",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "json_test",
-	"nameOnDisk" : "json_test",
+	"name" : "muduo_test",
+	"nameOnDisk" : "muduo_test",
 	"paths" : 
 	{
-		"build" : "test/json_test",
-		"source" : "test/json_test"
+		"build" : "test/muduo_test",
+		"source" : "test/muduo_test"
 	},
 	"sourceGroups" : 
 	[
@@ -86,7 +98,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "test/json_test/json_test.cpp",
+			"path" : "test/muduo_test/muduo_server.cc",
 			"sourceGroupIndex" : 0
 		}
 	],

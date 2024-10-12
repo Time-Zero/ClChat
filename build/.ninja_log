@@ -19,3 +19,8 @@
 736	979	1728723761259721692	../bin/muduo_test	863f9b048e0b09b8
 0	2447	1728723762729721116	test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o	9c8a6a15bc07b14e
 2447	2563	1728723762839721072	../bin/json_test	dac25c2c00f825d2
+0	3	0	clean	a7c70eacb11a5051
+1	808	1728731988658996379	test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o	c9b02ace1a489232
+808	1048	1728731988898996336	../bin/muduo_test	863f9b048e0b09b8
+0	2836	1728731990688996017	test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o	9c8a6a15bc07b14e
+2836	2979	1728731990838995991	../bin/json_test	dac25c2c00f825d2

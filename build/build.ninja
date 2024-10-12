@@ -119,7 +119,7 @@ build cmake_object_order_depends_target_json_test: phony || test/json_test/CMake
 
 build test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o: CXX_COMPILER__json_test ../test/json_test/json_test.cpp || cmake_object_order_depends_target_json_test
   DEP_FILE = test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o.d
-  FLAGS = -g   -std=gnu++14
+  FLAGS = -g -g   -std=gnu++14
   OBJECT_DIR = test/json_test/CMakeFiles/json_test.dir
   OBJECT_FILE_DIR = test/json_test/CMakeFiles/json_test.dir
 
@@ -129,14 +129,14 @@ build test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o: CXX_COMPILER__jso
 
 
 #############################################
-# Link the executable ../bin/json_test
+# Link the executable ../lib/json_test
 
-build ../bin/json_test: CXX_EXECUTABLE_LINKER__json_test test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o
-  FLAGS = -g
+build ../lib/json_test: CXX_EXECUTABLE_LINKER__json_test test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o
+  FLAGS = -g -g
   OBJECT_DIR = test/json_test/CMakeFiles/json_test.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = ../bin/json_test
+  TARGET_FILE = ../lib/json_test
   TARGET_PDB = json_test.dbg
 
 # =============================================================================
@@ -178,7 +178,7 @@ build cmake_object_order_depends_target_muduo_test: phony || test/muduo_test/CMa
 
 build test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o: CXX_COMPILER__muduo_test ../test/muduo_test/muduo_server.cc || cmake_object_order_depends_target_muduo_test
   DEP_FILE = test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o.d
-  FLAGS = -g   -std=gnu++14
+  FLAGS = -g -g   -std=gnu++14
   OBJECT_DIR = test/muduo_test/CMakeFiles/muduo_test.dir
   OBJECT_FILE_DIR = test/muduo_test/CMakeFiles/muduo_test.dir
 
@@ -188,23 +188,23 @@ build test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o: CXX_COMPILER_
 
 
 #############################################
-# Link the executable ../bin/muduo_test
+# Link the executable ../lib/muduo_test
 
-build ../bin/muduo_test: CXX_EXECUTABLE_LINKER__muduo_test test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o
-  FLAGS = -g
+build ../lib/muduo_test: CXX_EXECUTABLE_LINKER__muduo_test test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o
+  FLAGS = -g -g
   LINK_LIBRARIES = -lmuduo_net  -lmuduo_base  -lpthread
   OBJECT_DIR = test/muduo_test/CMakeFiles/muduo_test.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = ../bin/muduo_test
+  TARGET_FILE = ../lib/muduo_test
   TARGET_PDB = muduo_test.dbg
 
 # =============================================================================
 # Target aliases.
 
-build json_test: phony ../bin/json_test
+build json_test: phony ../lib/json_test
 
-build muduo_test: phony ../bin/muduo_test
+build muduo_test: phony ../lib/muduo_test
 
 # =============================================================================
 # Folder targets.
@@ -228,14 +228,14 @@ build test/all: phony test/json_test/all test/muduo_test/all
 #############################################
 # Folder: /home/ymc/ClChat/build/test/json_test
 
-build test/json_test/all: phony ../bin/json_test
+build test/json_test/all: phony ../lib/json_test
 
 # =============================================================================
 
 #############################################
 # Folder: /home/ymc/ClChat/build/test/muduo_test
 
-build test/muduo_test/all: phony ../bin/muduo_test
+build test/muduo_test/all: phony ../lib/muduo_test
 
 # =============================================================================
 # Built-in targets
