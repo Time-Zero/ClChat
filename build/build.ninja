@@ -130,14 +130,14 @@ build test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o: CXX_COMPILER__jso
 
 
 #############################################
-# Link the executable ../lib/json_test
+# Link the executable ../bin/json_test
 
-build ../lib/json_test: CXX_EXECUTABLE_LINKER__json_test test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o
+build ../bin/json_test: CXX_EXECUTABLE_LINKER__json_test test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o
   FLAGS = -g -g
   OBJECT_DIR = test/json_test/CMakeFiles/json_test.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = ../lib/json_test
+  TARGET_FILE = ../bin/json_test
   TARGET_PDB = json_test.dbg
 
 # =============================================================================
@@ -190,15 +190,15 @@ build test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o: CXX_COMPILER_
 
 
 #############################################
-# Link the executable ../lib/muduo_test
+# Link the executable ../bin/muduo_test
 
-build ../lib/muduo_test: CXX_EXECUTABLE_LINKER__muduo_test test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o
+build ../bin/muduo_test: CXX_EXECUTABLE_LINKER__muduo_test test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o
   FLAGS = -g -g
   LINK_LIBRARIES = -lmuduo_net  -lmuduo_base  -lpthread
   OBJECT_DIR = test/muduo_test/CMakeFiles/muduo_test.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = ../lib/muduo_test
+  TARGET_FILE = ../bin/muduo_test
   TARGET_PDB = muduo_test.dbg
 
 # =============================================================================
@@ -273,6 +273,13 @@ build src/server/CMakeFiles/ChatServer.dir/chatserver.cc.o: CXX_COMPILER__ChatSe
   OBJECT_DIR = src/server/CMakeFiles/ChatServer.dir
   OBJECT_FILE_DIR = src/server/CMakeFiles/ChatServer.dir
 
+build src/server/CMakeFiles/ChatServer.dir/chatservice.cc.o: CXX_COMPILER__ChatServer ../src/server/chatservice.cc || cmake_object_order_depends_target_ChatServer
+  DEP_FILE = src/server/CMakeFiles/ChatServer.dir/chatservice.cc.o.d
+  FLAGS = -g -g   -std=gnu++14
+  INCLUDES = -I../include -I../include/server
+  OBJECT_DIR = src/server/CMakeFiles/ChatServer.dir
+  OBJECT_FILE_DIR = src/server/CMakeFiles/ChatServer.dir
+
 build src/server/CMakeFiles/ChatServer.dir/main.cc.o: CXX_COMPILER__ChatServer ../src/server/main.cc || cmake_object_order_depends_target_ChatServer
   DEP_FILE = src/server/CMakeFiles/ChatServer.dir/main.cc.o.d
   FLAGS = -g -g   -std=gnu++14
@@ -286,25 +293,25 @@ build src/server/CMakeFiles/ChatServer.dir/main.cc.o: CXX_COMPILER__ChatServer .
 
 
 #############################################
-# Link the executable ../lib/ChatServer
+# Link the executable ../bin/ChatServer
 
-build ../lib/ChatServer: CXX_EXECUTABLE_LINKER__ChatServer src/server/CMakeFiles/ChatServer.dir/chatserver.cc.o src/server/CMakeFiles/ChatServer.dir/main.cc.o
+build ../bin/ChatServer: CXX_EXECUTABLE_LINKER__ChatServer src/server/CMakeFiles/ChatServer.dir/chatserver.cc.o src/server/CMakeFiles/ChatServer.dir/chatservice.cc.o src/server/CMakeFiles/ChatServer.dir/main.cc.o
   FLAGS = -g -g
   LINK_LIBRARIES = -lmuduo_net  -lmuduo_base  -lpthread
   OBJECT_DIR = src/server/CMakeFiles/ChatServer.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = ../lib/ChatServer
+  TARGET_FILE = ../bin/ChatServer
   TARGET_PDB = ChatServer.dbg
 
 # =============================================================================
 # Target aliases.
 
-build ChatServer: phony ../lib/ChatServer
+build ChatServer: phony ../bin/ChatServer
 
-build json_test: phony ../lib/json_test
+build json_test: phony ../bin/json_test
 
-build muduo_test: phony ../lib/muduo_test
+build muduo_test: phony ../bin/muduo_test
 
 # =============================================================================
 # Folder targets.
@@ -328,7 +335,7 @@ build src/all: phony src/server/all
 #############################################
 # Folder: /home/ymc/ClChat/build/src/server
 
-build src/server/all: phony ../lib/ChatServer
+build src/server/all: phony ../bin/ChatServer
 
 # =============================================================================
 
@@ -342,14 +349,14 @@ build test/all: phony test/json_test/all test/muduo_test/all
 #############################################
 # Folder: /home/ymc/ClChat/build/test/json_test
 
-build test/json_test/all: phony ../lib/json_test
+build test/json_test/all: phony ../bin/json_test
 
 # =============================================================================
 
 #############################################
 # Folder: /home/ymc/ClChat/build/test/muduo_test
 
-build test/muduo_test/all: phony ../lib/muduo_test
+build test/muduo_test/all: phony ../bin/muduo_test
 
 # =============================================================================
 # Built-in targets

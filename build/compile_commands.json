@@ -19,6 +19,12 @@
 
 {
   "directory": "/home/ymc/ClChat/build",
+  "command": "/usr/bin/g++   -I../include -I../include/server  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/chatservice.cc.o -c /home/ymc/ClChat/src/server/chatservice.cc",
+  "file": "/home/ymc/ClChat/src/server/chatservice.cc"
+},
+
+{
+  "directory": "/home/ymc/ClChat/build",
   "command": "/usr/bin/g++   -I../include -I../include/server  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/main.cc.o -c /home/ymc/ClChat/src/server/main.cc",
   "file": "/home/ymc/ClChat/src/server/main.cc"
 }

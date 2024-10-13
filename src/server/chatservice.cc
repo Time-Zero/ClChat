@@ -18,12 +18,12 @@ ChatService& ChatService::GetInstance()
 
 void ChatService::login(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp)
 {
-
+    LOG_INFO << "do login service!";
 }
 
 void ChatService::reg(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp)
 {
-
+    LOG_INFO << "do reg service!";
 }
 
 MsgHandler ChatService::getHandler(int msgid)
