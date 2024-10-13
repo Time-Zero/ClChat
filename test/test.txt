@@ -1,0 +1,3 @@
+{"msgid":1,"id":1,"password":"123456"}
+{"msgid":1,"id":2,"password":"666666"}
+{"msgid":5,"id":1,"from":"zhang san","to":2,"msg":"hello1"}

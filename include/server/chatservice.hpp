@@ -1,6 +1,7 @@
 #pragma once
 
 #include "usermodel.hpp"
+#include "offlinemessagemodel.hpp"
 #include <muduo/base/Timestamp.h>
 #include <muduo/net/Callbacks.h>
 #include <muduo/net/TcpConnection.h>
@@ -25,6 +26,9 @@ public:
     // 处理注册业务
     void reg(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
 
+    // 一对一聊天业务
+    void oneChat(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
+
     // 获取消息对应的处理器
     MsgHandler getHandler(int msgid);
 
@@ -38,5 +42,6 @@ private:
     std::unordered_map<int, muduo::net::TcpConnectionPtr> _userConnMap;     // 存储在线用户的通信连接
     std::unordered_map<muduo::net::TcpConnectionPtr, int> _connUserMap;     // 存储通信连接和用户之间的联系，用于客户端异常断开时查找用户id
     UserModel _userModel;                                       // 用户操作
+    OfflineMsgModel _offlineMsgModel;                           // 离线消息操作
     std::mutex _mtx;                                            // _userConnMap操作的互斥锁
 };

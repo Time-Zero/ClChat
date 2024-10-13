@@ -1,18 +1,20 @@
 #include "chatservice.hpp"
 #include "public.hpp"
 #include "user.hpp"
-#include <cerrno>
 #include <functional>
 #include <muduo/base/Logging.h>
 #include <mutex>
 #include <nlohmann/json_fwd.hpp>
 #include <usermodel.hpp>
+#include <vector>
+#include <string>
 
 // 注册消息以及对应的回调操作
 ChatService::ChatService()
 {
     _msgHandlerMap.insert({LOGIN_MSG, std::bind(&ChatService::login, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)});
     _msgHandlerMap.insert({REG_MSG, std::bind(&ChatService::reg, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)});
+    _msgHandlerMap.insert({ONE_CHAT_MSG, std::bind(&ChatService::oneChat, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)});
 }
 
 ChatService& ChatService::GetInstance()
@@ -55,6 +57,15 @@ void ChatService::login(const muduo::net::TcpConnectionPtr& conn, nlohmann::json
             response["errno"] = 0;
             response["id"] = user.getId();
             response["name"] = user.getName();
+
+            // 查询该用户是否有离线消息
+            std::vector<std::string> vec = _offlineMsgModel.query(user.getId());
+            if(!vec.empty())
+            {
+                response["offlinemsg"] = vec;
+                // 用户上线读取离线消息后，删除离线消息
+                _offlineMsgModel.remove(user.getId());
+            }
         }
     }
     else
@@ -139,5 +150,26 @@ void ChatService::clientCloseException(const muduo::net::TcpConnectionPtr& conn)
         user.setId(id);
         user.setState("offline");
         _userModel.updateState(user);
+    }
+}
+
+void ChatService::oneChat(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp)
+{
+    int toid = js["to"].get<int>();
+    
+    {
+        std::lock_guard<std::mutex> lck(_mtx);
+        auto it = _userConnMap.find(toid);
+        if(it == _userConnMap.end())
+        {
+            // 消息接收者不在线，消息存储到离线消息表
+            _offlineMsgModel.insert(toid, js.dump());
+        }
+        else
+        {
+            // 消息接收者在线，消息转发
+            it->second->send(js.dump());
+            return;
+        }
     }
 }

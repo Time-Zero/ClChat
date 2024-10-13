@@ -31,6 +31,12 @@
 
 {
   "directory": "/home/ymc/ClChat/build",
+  "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/offlinemessagemodel.cc.o -c /home/ymc/ClChat/src/server/offlinemessagemodel.cc",
+  "file": "/home/ymc/ClChat/src/server/offlinemessagemodel.cc"
+},
+
+{
+  "directory": "/home/ymc/ClChat/build",
   "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/usermodel.cc.o -c /home/ymc/ClChat/src/server/usermodel.cc",
   "file": "/home/ymc/ClChat/src/server/usermodel.cc"
 },
