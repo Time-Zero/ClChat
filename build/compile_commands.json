@@ -1,31 +1,43 @@
 [
 {
   "directory": "/home/ymc/ClChat/build",
-  "command": "/usr/bin/g++   -I../include -I../include/server  -g -g   -std=gnu++14 -o test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o -c /home/ymc/ClChat/test/json_test/json_test.cpp",
+  "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o test/json_test/CMakeFiles/json_test.dir/json_test.cpp.o -c /home/ymc/ClChat/test/json_test/json_test.cpp",
   "file": "/home/ymc/ClChat/test/json_test/json_test.cpp"
 },
 
 {
   "directory": "/home/ymc/ClChat/build",
-  "command": "/usr/bin/g++   -I../include -I../include/server  -g -g   -std=gnu++14 -o test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o -c /home/ymc/ClChat/test/muduo_test/muduo_server.cc",
+  "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o test/muduo_test/CMakeFiles/muduo_test.dir/muduo_server.cc.o -c /home/ymc/ClChat/test/muduo_test/muduo_server.cc",
   "file": "/home/ymc/ClChat/test/muduo_test/muduo_server.cc"
 },
 
 {
   "directory": "/home/ymc/ClChat/build",
-  "command": "/usr/bin/g++   -I../include -I../include/server  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/chatserver.cc.o -c /home/ymc/ClChat/src/server/chatserver.cc",
+  "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/chatserver.cc.o -c /home/ymc/ClChat/src/server/chatserver.cc",
   "file": "/home/ymc/ClChat/src/server/chatserver.cc"
 },
 
 {
   "directory": "/home/ymc/ClChat/build",
-  "command": "/usr/bin/g++   -I../include -I../include/server  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/chatservice.cc.o -c /home/ymc/ClChat/src/server/chatservice.cc",
+  "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/chatservice.cc.o -c /home/ymc/ClChat/src/server/chatservice.cc",
   "file": "/home/ymc/ClChat/src/server/chatservice.cc"
 },
 
 {
   "directory": "/home/ymc/ClChat/build",
-  "command": "/usr/bin/g++   -I../include -I../include/server  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/main.cc.o -c /home/ymc/ClChat/src/server/main.cc",
+  "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/main.cc.o -c /home/ymc/ClChat/src/server/main.cc",
   "file": "/home/ymc/ClChat/src/server/main.cc"
+},
+
+{
+  "directory": "/home/ymc/ClChat/build",
+  "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/usermodel.cc.o -c /home/ymc/ClChat/src/server/usermodel.cc",
+  "file": "/home/ymc/ClChat/src/server/usermodel.cc"
+},
+
+{
+  "directory": "/home/ymc/ClChat/build",
+  "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/db/db.cc.o -c /home/ymc/ClChat/src/server/db/db.cc",
+  "file": "/home/ymc/ClChat/src/server/db/db.cc"
 }
 ]
