@@ -1,5 +1,6 @@
 #include "chatservice.hpp"
 #include "public.hpp"
+#include "user.hpp"
 #include <cerrno>
 #include <functional>
 #include <muduo/base/Logging.h>
@@ -44,6 +45,7 @@ void ChatService::login(const muduo::net::TcpConnectionPtr& conn, nlohmann::json
             {
                 std::lock_guard<std::mutex> lck(_mtx);
                 _userConnMap.insert({id,conn});
+                _connUserMap.insert({conn,id});
             }
 
             // 登录成功,更新用户状态信息 
@@ -106,5 +108,36 @@ MsgHandler ChatService::getHandler(int msgid)
     else 
     {
         return _msgHandlerMap[msgid];
+    }
+}
+
+void ChatService::clientCloseException(const muduo::net::TcpConnectionPtr& conn)
+{
+    std::unique_lock<std::mutex> lck(_mtx);
+    // 查找对应的连接
+    auto it = _connUserMap.find(conn);
+    // 如果连接存在
+    if(it != _connUserMap.end())
+    {
+        // 找到用户id
+        int id = it->second;
+
+        // 从用户连接表中查找用户
+        auto user_it = _userConnMap.find(id);
+        // 如果找不到，直接返回
+        if(user_it == _userConnMap.end())       return; 
+        _userConnMap.erase(user_it);
+
+        // 从连接用户表中删除连接
+        _connUserMap.erase(it);
+
+        // 完成映射表的操作，可以释放锁了
+        lck.unlock();
+    
+        // 更新用户的状态
+        User user;
+        user.setId(id);
+        user.setState("offline");
+        _userModel.updateState(user);
     }
 }

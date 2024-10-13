@@ -27,12 +27,16 @@ public:
 
     // 获取消息对应的处理器
     MsgHandler getHandler(int msgid);
+
+    // 处理客户端异常退出
+    void clientCloseException(const muduo::net::TcpConnectionPtr& conn);
 private:
     ChatService();
 
 private:
     std::unordered_map<int , MsgHandler> _msgHandlerMap;        // 存储消息id和其对应的业务处理方法
     std::unordered_map<int, muduo::net::TcpConnectionPtr> _userConnMap;     // 存储在线用户的通信连接
+    std::unordered_map<muduo::net::TcpConnectionPtr, int> _connUserMap;     // 存储通信连接和用户之间的联系，用于客户端异常断开时查找用户id
     UserModel _userModel;                                       // 用户操作
     std::mutex _mtx;                                            // _userConnMap操作的互斥锁
 };

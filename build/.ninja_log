@@ -71,3 +71,7 @@
 0	2381	1728808161618037502	src/server/CMakeFiles/ChatServer.dir/chatservice.cc.o	406dbb138f82d7c1
 0	2555	1728808161788037460	src/server/CMakeFiles/ChatServer.dir/chatserver.cc.o	1a1bbac0fe3220e6
 2555	2956	1728808162188037363	../bin/ChatServer	15046d36349e16f4
+1	319	1728809539897736992	src/server/CMakeFiles/ChatServer.dir/usermodel.cc.o	f93630672b11cc2f
+0	2385	1728809541957736523	src/server/CMakeFiles/ChatServer.dir/chatservice.cc.o	406dbb138f82d7c1
+0	2488	1728809542057736500	src/server/CMakeFiles/ChatServer.dir/chatserver.cc.o	1a1bbac0fe3220e6
+2488	2831	1728809542407736420	../bin/ChatServer	15046d36349e16f4

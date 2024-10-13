@@ -55,6 +55,9 @@ User UserModel::query(int id)
     return User();
 }
 
+/*
+更新用户的状态信息,只需要用户的状态和id两个属性
+*/ 
 bool UserModel::updateState(User user)
 {
     char sql[1024] = {0};
