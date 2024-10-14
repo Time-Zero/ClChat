@@ -29,6 +29,9 @@ public:
     // 一对一聊天业务
     void oneChat(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
 
+    // 服务器异常，业务重置方法
+    void reset();
+
     // 获取消息对应的处理器
     MsgHandler getHandler(int msgid);
 

@@ -36,7 +36,7 @@ bool MySQL::connect()
 
 bool MySQL::update(std::string sql)
 {
-    if(!mysql_query(_conn.get(), sql.c_str()))
+    if(mysql_query(_conn.get(), sql.c_str()))
     {
         LOG_INFO << __FILE__ << ":" << __LINE__ << ":" << sql << "更新失败!";
         return false;
@@ -47,7 +47,7 @@ bool MySQL::update(std::string sql)
 
 MYSQL_RES* MySQL::query(std::string sql)
 {
-    if(!mysql_query(_conn.get(), sql.c_str()))
+    if(mysql_query(_conn.get(), sql.c_str()))
     {
         LOG_INFO << __FILE__ << ":" << __LINE__ << ":" << sql << "查询失败!";
         return nullptr;

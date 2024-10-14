@@ -14,6 +14,8 @@ public:
 
     bool updateState(User user);
 
+    // 将所有用户的状态重置为offline
+    void resetState();
 private:
 
 };

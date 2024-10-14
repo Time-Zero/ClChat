@@ -8,6 +8,7 @@
 #include <usermodel.hpp>
 #include <vector>
 #include <string>
+#include "usermodel.hpp"
 
 // 注册消息以及对应的回调操作
 ChatService::ChatService()
@@ -172,4 +173,9 @@ void ChatService::oneChat(const muduo::net::TcpConnectionPtr& conn, nlohmann::js
             return;
         }
     }
+}
+
+void ChatService::reset()
+{
+    _userModel.resetState();
 }
