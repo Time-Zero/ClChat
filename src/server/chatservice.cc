@@ -16,6 +16,7 @@ ChatService::ChatService()
     _msgHandlerMap.insert({LOGIN_MSG, std::bind(&ChatService::login, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)});
     _msgHandlerMap.insert({REG_MSG, std::bind(&ChatService::reg, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)});
     _msgHandlerMap.insert({ONE_CHAT_MSG, std::bind(&ChatService::oneChat, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)});
+    _msgHandlerMap.insert({ADD_FRIEND_MSG, std::bind(&ChatService::addFriend, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)});
 }
 
 ChatService& ChatService::GetInstance()
@@ -66,6 +67,21 @@ void ChatService::login(const muduo::net::TcpConnectionPtr& conn, nlohmann::json
                 response["offlinemsg"] = vec;
                 // 用户上线读取离线消息后，删除离线消息
                 _offlineMsgModel.remove(user.getId());
+            }
+
+            std::vector<User> user_vec = _friendModel.query(user.getId());
+            if(!user_vec.empty())
+            {
+                std::vector<std::string> temp_vec;
+                for(auto it : user_vec)
+                {
+                    nlohmann::json js;
+                    js["id"] = it.getId();
+                    js["name"] = it.getName();
+                    js["state"] = it.getState();
+                    temp_vec.push_back(js.dump());
+                }
+                response["friends"] = temp_vec;
             }
         }
     }
@@ -178,4 +194,14 @@ void ChatService::oneChat(const muduo::net::TcpConnectionPtr& conn, nlohmann::js
 void ChatService::reset()
 {
     _userModel.resetState();
+}
+
+
+void ChatService::addFriend(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp)
+{
+    int userid = js["id"];
+    int friendid = js["friendid"];
+
+    // 存储好友信息
+    _friendModel.insert(userid, friendid);
 }

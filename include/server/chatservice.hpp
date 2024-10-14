@@ -2,10 +2,12 @@
 
 #include "usermodel.hpp"
 #include "offlinemessagemodel.hpp"
+#include "friendmodel.hpp"
 #include <muduo/base/Timestamp.h>
 #include <muduo/net/Callbacks.h>
 #include <muduo/net/TcpConnection.h>
 #include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include <unordered_map>
 #include <functional>
 #include <mutex>
@@ -29,6 +31,9 @@ public:
     // 一对一聊天业务
     void oneChat(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
 
+    // 添加好友业务
+    void addFriend(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
+
     // 服务器异常，业务重置方法
     void reset();
 
@@ -46,5 +51,6 @@ private:
     std::unordered_map<muduo::net::TcpConnectionPtr, int> _connUserMap;     // 存储通信连接和用户之间的联系，用于客户端异常断开时查找用户id
     UserModel _userModel;                                       // 用户操作
     OfflineMsgModel _offlineMsgModel;                           // 离线消息操作
+    FriendModel _friendModel;
     std::mutex _mtx;                                            // _userConnMap操作的互斥锁
 };

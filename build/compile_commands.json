@@ -25,6 +25,12 @@
 
 {
   "directory": "/home/ymc/ClChat/build",
+  "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/friendmodel.cc.o -c /home/ymc/ClChat/src/server/friendmodel.cc",
+  "file": "/home/ymc/ClChat/src/server/friendmodel.cc"
+},
+
+{
+  "directory": "/home/ymc/ClChat/build",
   "command": "/usr/bin/g++   -I../include -I../include/server -I../include/server/db  -g -g   -std=gnu++14 -o src/server/CMakeFiles/ChatServer.dir/main.cc.o -c /home/ymc/ClChat/src/server/main.cc",
   "file": "/home/ymc/ClChat/src/server/main.cc"
 },
