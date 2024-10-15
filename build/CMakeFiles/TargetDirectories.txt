@@ -13,3 +13,6 @@
 /home/ymc/ClChat/build/src/server/CMakeFiles/rebuild_cache.dir
 /home/ymc/ClChat/build/src/server/CMakeFiles/edit_cache.dir
 /home/ymc/ClChat/build/src/server/CMakeFiles/ChatServer.dir
+/home/ymc/ClChat/build/src/client/CMakeFiles/rebuild_cache.dir
+/home/ymc/ClChat/build/src/client/CMakeFiles/edit_cache.dir
+/home/ymc/ClChat/build/src/client/CMakeFiles/ChatClient.dir

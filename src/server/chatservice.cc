@@ -42,7 +42,7 @@ void ChatService::login(const muduo::net::TcpConnectionPtr& conn, nlohmann::json
         {
             // 用户已经登录
             response["errno"] = 2;
-            response["errmsg"] = "该用户已经登录";
+            response["errmsg"] = "this account is using, input another!";
         }
         else
         {
@@ -90,7 +90,7 @@ void ChatService::login(const muduo::net::TcpConnectionPtr& conn, nlohmann::json
     {
         // 用户不存在,或用户存在但是密码错误
         response["errno"] = 1;
-        response["errmsg"] = "用户名或密码错误";
+        response["errmsg"] = "username or password error!";
     }
 
     conn->send(response.dump());
