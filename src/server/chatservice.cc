@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include "usermodel.hpp"
+#include "group.hpp"
 
 // 注册消息以及对应的回调操作
 ChatService::ChatService()
@@ -204,4 +205,46 @@ void ChatService::addFriend(const muduo::net::TcpConnectionPtr& conn, nlohmann::
 
     // 存储好友信息
     _friendModel.insert(userid, friendid);
+}
+
+void ChatService::createGroup(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp)
+{
+    int userid = js["id"].get<int>();
+    std::string name = js["groupname"];
+    std::string desc = js["groupdesc"];
+
+    Group group(-1,name,desc);
+    if(_groupModel.createGroup(group))      // 创建群组，并把创建者设置为'creator'身份
+    {
+        _groupModel.addGroup(userid, group.getId(), "creator");
+    }
+}
+
+void ChatService::addGroup(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp)
+{
+    int userid = js["id"];
+    int groupid = js["groupid"];
+    _groupModel.addGroup(userid, groupid, "normal");
+}
+
+void ChatService::groupChat(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp)
+{
+    int userid = js["id"];
+    int groupid = js["groupid"];
+    std::vector<int> useridVec = _groupModel.queryGroupUsers(userid, groupid);
+    for(int id : useridVec)
+    {
+        std::lock_guard<std::mutex> lck(_mtx);
+        auto it = _userConnMap.find(id);
+        if(it != _userConnMap.end())
+        {
+            // 在线消息转发
+            it->second->send(js.dump());
+        }
+        else
+        {
+            // 离线消息保存
+            _offlineMsgModel.insert(id, js.dump());
+        }
+    }
 }

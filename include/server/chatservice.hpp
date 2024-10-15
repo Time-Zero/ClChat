@@ -2,6 +2,7 @@
 
 #include "usermodel.hpp"
 #include "offlinemessagemodel.hpp"
+#include "groupmodel.hpp"
 #include "friendmodel.hpp"
 #include <muduo/base/Timestamp.h>
 #include <muduo/net/Callbacks.h>
@@ -34,6 +35,15 @@ public:
     // 添加好友业务
     void addFriend(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
 
+    // 创建群聊
+    void createGroup(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
+
+    // 加入群组业务
+    void addGroup(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
+
+    // 群组聊天业务
+    void groupChat(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
+
     // 服务器异常，业务重置方法
     void reset();
 
@@ -49,8 +59,9 @@ private:
     std::unordered_map<int , MsgHandler> _msgHandlerMap;        // 存储消息id和其对应的业务处理方法
     std::unordered_map<int, muduo::net::TcpConnectionPtr> _userConnMap;     // 存储在线用户的通信连接
     std::unordered_map<muduo::net::TcpConnectionPtr, int> _connUserMap;     // 存储通信连接和用户之间的联系，用于客户端异常断开时查找用户id
+    std::mutex _mtx;                                            // _userConnMap操作的互斥锁
     UserModel _userModel;                                       // 用户操作
     OfflineMsgModel _offlineMsgModel;                           // 离线消息操作
-    FriendModel _friendModel;
-    std::mutex _mtx;                                            // _userConnMap操作的互斥锁
+    FriendModel _friendModel;                                   // 好友操作
+    GroupModel _groupModel;                                     // 群组操作
 };
