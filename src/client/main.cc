@@ -1,11 +1,13 @@
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
+#include <functional>
 #include <nlohmann/json.hpp>
 #include <iostream>
 #include <nlohmann/json_fwd.hpp>
 #include <thread>
 #include <string>
+#include <unordered_map>
 #include <vector>
 #include <chrono>
 #include <ctime>
@@ -37,6 +39,8 @@ void readTaskHandler(int clientfd);
 std::string getCurrentTime();
 // 主聊天页面程序
 void mainMenu(int clientfd);
+// 帮助界面
+void help();
 
 // 聊天客户端实现，main线程负责发送，子线程负责接收
 int main(int argc, char** argv)
@@ -280,7 +284,24 @@ void showCurrentUserData()
 
 void readTaskHandler(int clientfd)
 {
+    for(;;)
+    {
+        char buffer[1024] = {0};
+        int len = recv(clientfd, buffer, 1024, 0);
+        if(len == -1 || len == 0)
+        {
+            close(clientfd);
+            exit(-1);
+        }
 
+        // 接收chatserver转发的数据，反序列化生成json数据对象
+        nlohmann::json js = nlohmann::json::parse(buffer);
+        if(js["msgid"].get<int>() == ONE_CHAT_MSG)
+        {
+            cout << js["time"].get<std::string>() << "[" << js["id"] << "]" << js["name"] << " said: " << js["msg"] << endl;
+            continue;
+        }
+    }
 }
 
 std::string getCurrentTime()
@@ -288,7 +309,23 @@ std::string getCurrentTime()
     return std::string();
 }
 
-void mainMenu()
-{
 
+std::unordered_map<std::string, std::function<void(int,std::string)>> commandHandlerMap = {
+    // {"help", help},
+    // {"char", chat},
+    // {"addfriend", addfriend}
+    // {"creategroup",creategroup}
+    // {"addgroup",addgroup}
+    // {"groupchat",groupchat}
+    // {"quit",quit}
+};
+
+void mainMenu(int clientfd)
+{
+    help();
+}
+
+void help()
+{
+    
 }

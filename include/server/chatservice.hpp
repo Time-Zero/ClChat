@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <functional>
 #include <mutex>
+#include "redis.hpp"
 
 // 处理消息的回调方法类型
 using MsgHandler = std::function<void(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp)>;
@@ -26,6 +27,9 @@ public:
     // 处理登录业务
     void login(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
     
+    // 注销业务
+    void loginout(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
+
     // 处理注册业务
     void reg(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
 
@@ -43,6 +47,8 @@ public:
 
     // 群组聊天业务
     void groupChat(const muduo::net::TcpConnectionPtr& conn, nlohmann::json& js, muduo::Timestamp);
+
+    void handlerRedisSubscribeMessage(int userid, std::string msg);
 
     // 服务器异常，业务重置方法
     void reset();
@@ -64,4 +70,6 @@ private:
     OfflineMsgModel _offlineMsgModel;                           // 离线消息操作
     FriendModel _friendModel;                                   // 好友操作
     GroupModel _groupModel;                                     // 群组操作
+
+    Redis _redis;
 };
